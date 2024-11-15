@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Resources:
+  HighCPUAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: HighCPUAlarm
+      Namespace: AWS/EC2
+      MetricName: CPUUtilization
+      Threshold: 80 #use your own threshoold
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Period: 300 #change here as you want 
+      EvaluationPeriods: 2
+      AlarmActions:
+        - arn:aws:sns:us-east-1:123456789012:MyNotificationTopic # use there the ARN for sns topic who is exist
+      Dimensions:
+        - Name: AutoScalingGroupName
+          Value: !Ref AutoScalingGroup
+
+  CustomMetric:
+    Type: AWS::CloudWatch::Metric
+    Properties:
+      MetricName: MyCustomMetric
+      Namespace: MyNamespace
+      Unit: Count
+      Value: 1
+
+...

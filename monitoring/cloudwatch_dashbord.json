@@ -1,0 +1,30 @@
+{
+  "widgets": [
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 0,
+      "width": 6,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          [ "AWS/EC2", "CPUUtilization", "AutoScalingGroupName", "${AutoScalingGroup}" ]
+        ],
+        "title": "CPU Utilization"
+      }
+    },
+    {
+      "type": "metric",
+      "x": 6,
+      "y": 0,
+      "width": 6,
+      "height": 6,
+      "properties": {
+        "metrics": [
+          [ "MyNamespace", "MyCustomMetric" ]
+        ],
+        "title": "Custom Metric"
+      }
+    }
+  ]
+}
